@@ -7,9 +7,9 @@
     "default_popup": "src/popup.html"
   },
   "icons": {
-    "16": "media/icon_16.png",
-    "48": "media/icon_48.png",
-    "128": "media/icon_128.png"
+    "16": "media/icon_16.jpg",
+    "48": "media/icon_48.jpg",
+    "128": "media/icon_128.jpg"
   },
   "manifest_version": 2
 }
