@@ -471,7 +471,7 @@ function printTable(mm, yy) {
 	var MonthHead = mm + "/" + yy;
 	var LunarHead = getYearCanChi(ld1.year);
 	var res = "";
-	res += ('<table class="thang" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
+	res += ('<table class="thang lunar-calendar__month-table" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
 	res += printHead(mm, yy);
 	for (i = 0; i < 6; i++) {
 		res += ("<tr>\n");
@@ -518,13 +518,9 @@ function getNextYearLink(mm, yy) {
 function printHead(mm, yy) {
 	var res = "";
 	var monthName = mm+"/"+yy;
-	//res += ('<tr><td colspan="7" class="tenthang" onClick="showMonthSelect();">'+monthName+'</td></tr>\n');
 	res += ('<tr><td colspan="2" class="navi-l">'+getPrevYearLink(mm, yy)+' &nbsp;'+getPrevMonthLink(mm, yy)+'</td>\n');
-	//res += ('<td colspan="1" class="navig"><a href="'+getPrevMonthLink(mm, yy)+'"><img src="left1.gif" alt="Prev"></a></td>\n');
-	res += ('<td colspan="3" class="tenthang" onClick="showMonthSelect();">'+monthName+'</td>\n');
-	//res += ('<td colspan="1" class="navi-r"><a href="'+getNextMonthLink(mm, yy)+'"><img src="right1.gif" alt="Next"></a></td>\n');
+	res += ('<td colspan="3" class="tenthang">'+monthName+'</td>\n');
 	res += ('<td colspan="2" class="navi-r">'+getNextMonthLink(mm, yy)+' &nbsp;'+getNextYearLink(mm, yy)+'</td></tr>\n');
-	//res += ('<tr><td colspan="7" class="tenthang"><a href="'+getNextMonthLink(mm, yy)+'"><img src="right.gif" alt="Next"></a></td></tr>\n');
 	res += ('<tr onClick="alertAbout();">\n');
 	for(var i=0;i<=6;i++) {
 		res += ('<td class=ngaytuan>'+DAYNAMES[i]+'</td>\n');
@@ -534,12 +530,12 @@ function printHead(mm, yy) {
 }
 
 function printEmptyCell() {
-		return '<td class=ngaythang><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>\n';
+		return '<td class=lunar-calendar__month-table__cell><div class=cn>&nbsp;</div> <div class=am>&nbsp;</div></td>\n';
 }
 
 function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	var cellClass, solarClass, lunarClass, solarColor;
-	cellClass = "ngaythang";
+	cellClass = "lunar-calendar__month-table__cell";
 	solarClass = "t2t6";
 	lunarClass = "am";
 	solarColor = "black";
@@ -552,7 +548,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 		solarColor = "green";
 	}
 	if (solarDate == today.getDate() && solarMonth == today.getMonth()+1 && solarYear == today.getFullYear()) {
-		cellClass = "homnay";
+		cellClass = "homnay lunar-calendar__month-table__cell current-date";
 	}
 	if (lunarDate.day == 1 && lunarDate.month == 1) {
 		cellClass = "tet";
@@ -567,23 +563,18 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	var res = "";
 	var args = lunarDate.day + "," + lunarDate.month + "," + lunarDate.year + "," + lunarDate.leap;
 	args += ("," + lunarDate.jd + "," + solarDate + "," + solarMonth + "," + solarYear);
+	const dateInfo = ` data-day=${lunarDate.day} data-month=${lunarDate.month} data-year=${lunarDate.year} data-leap = ${lunarDate.leap} data-jd=${lunarDate.jd} data-solar-day=${solarDate} data-solar-month=${solarMonth} data-solar-year=${solarYear} `;
 	res += ('<td class="'+cellClass+'"');
-	if (lunarDate != null) res += (' title="'+getDayName(lunarDate)+'" onClick="alertDayInfo('+args+');"');
+	if (lunarDate != null) {
+		res += (' title="'+getDayName(lunarDate)+'"' + dateInfo);
+	}
 	res += (' <div style=color:'+solarColor+' class="'+solarClass+'">'+solarDate+'</div> <div class="'+lunarClass+'">'+lunar+'</div></td>\n');
 	return res;
 }
 
 function printFoot() {
 	var res = "";
-	res += '<script language="JavaScript" src="amlich-hnd.js"></script>\n';
 	return res;
-}
-
-function showMonthSelect() {
-	var home = "http://www.ifis.uni-luebeck.de/~duc/amlich/JavaScript/";
-	window.open(home, "win2702", "menubar=yes,scrollbars=yes,status=yes,toolbar=yes,resizable=yes,location=yes");
-	//window.location = home;
-	//alertAbout();
 }
 
 function showYearSelect() {
@@ -615,5 +606,3 @@ function showVietCal() {
 	window.status = getCurrentTime() + " -+- " + getTodayString();
 	window.window.setTimeout("showVietCal()",5000);
 }
-
-//showVietCal();
