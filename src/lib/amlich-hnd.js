@@ -474,7 +474,11 @@ function printTable(mm, yy) {
 	res += `<div class="lunar-calendar__month-head"> 
 						<div class="lunar-calendar__month-head__date">${mm}</div>
 						<div class="lunar-calendar__month-head__day-of-week">${TUAN[(currentLunarDate.jd + 1) % 7]}</div>
-						<div class="lunar-calendar__month-head__description"></div>
+						<div class="lunar-calendar__month-head__description">
+						  <div>Giờ đầu ngày: ${getCanHour0(currentLunarDate.jd)} ${CHI[0]}</div>
+						  <div>Giờ Hoàng Đao: ${getGioHoangDao(currentLunarDate.jd)}</div>
+						  <div>Tiết: ${TIETKHI[getSunLongitude(currentLunarDate.jd+1, 7.0)]}</div>
+            </div>
  					</div>`;
 	res += ('<table class="lunar-calendar__month-table">\n');
 	res += printHead(mm, yy);
