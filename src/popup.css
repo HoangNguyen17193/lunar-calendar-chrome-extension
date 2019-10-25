@@ -1,3 +1,36 @@
+body {
+  margin: 0;
+}
 .lunar-calendar {
-  width: 500px;
+  width: 700px;
+  height: 350px;
+}
+.lunar-calendar__month-head {
+  background-color: #2b2b39;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+  height: 350px;
+  width: 300px;
+  float: left;
+}
+
+.lunar-calendar__month-head__date {
+  margin-top: 30px;
+  font-size: 90px;
+
+}
+
+.lunar-calendar__month-head__day-of-week {
+  font-size: 25px;
+}
+
+.lunar-calendar__month-head__description {
+
+}
+
+.lunar-calendar__month-table {
+  width: 400px;
+  height: 300px;
 }
