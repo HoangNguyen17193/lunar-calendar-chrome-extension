@@ -471,7 +471,12 @@ function printTable(mm, yy) {
 	var MonthHead = mm + "/" + yy;
 	var LunarHead = getYearCanChi(ld1.year);
 	var res = "";
-	res += ('<table class="thang lunar-calendar__month-table" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
+	res += `<div class="lunar-calendar__month-head"> 
+						<div class="lunar-calendar__month-head__date">${mm}</div>
+						<div class="lunar-calendar__month-head__day-of-week">${TUAN[(currentLunarDate.jd + 1) % 7]}</div>
+						<div class="lunar-calendar__month-head__description"></div>
+ 					</div>`;
+	res += ('<table class="lunar-calendar__month-table">\n');
 	res += printHead(mm, yy);
 	for (i = 0; i < 6; i++) {
 		res += ("<tr>\n");
@@ -537,7 +542,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	var cellClass, solarClass, lunarClass, solarColor;
 	cellClass = "lunar-calendar__month-table__cell";
 	solarClass = "t2t6";
-	lunarClass = "am";
+	lunarClass = "am lunar-calendar__month-table__cell__lunar";
 	solarColor = "black";
 	var dow = (lunarDate.jd + 1) % 7;
 	if (dow == 0) {
@@ -578,13 +583,7 @@ function printFoot() {
 }
 
 function showYearSelect() {
-	//window.open("selectyear.html", "win2702", "menubar=yes,scrollbars=yes");
 	window.print();
-}
-
-function infoCellSelect(id) {
-	if (id == 0) {
-	}
 }
 
 function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
@@ -600,9 +599,4 @@ function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 
 function alertAbout() {
 	alert(ABOUT);
-}
-
-function showVietCal() {
-	window.status = getCurrentTime() + " -+- " + getTodayString();
-	window.window.setTimeout("showVietCal()",5000);
 }
