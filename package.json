@@ -1,0 +1,28 @@
+{
+  "name": "lunar-calendar-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js --watch",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoangNguyen17193/lunar-calendar-chrome-extension.git"
+  },
+  "author": "Hoang Nguyen (Tino)",
+  "license": "APACHE 2.0",
+  "bugs": {
+    "url": "https://github.com/HoangNguyen17193/lunar-calendar-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/HoangNguyen17193/lunar-calendar-chrome-extension#readme",
+  "dependencies": {
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
