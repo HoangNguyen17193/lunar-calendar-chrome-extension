@@ -7,10 +7,5 @@ module.exports = merge(common, {
   mode: 'production',
   optimization: {
     minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'bundle.[hash].css'
-    })
-  ]
+  }
 });

@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   mode: 'development',
   target: 'node',
   output: {
@@ -12,6 +13,15 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /.(png|jpg|gif)$/,
+        exclude: /node_modules/,
+        loader: 'file-loader'
+      },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -25,6 +35,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
     })
