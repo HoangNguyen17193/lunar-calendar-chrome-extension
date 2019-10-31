@@ -70,7 +70,7 @@ function decodeLunarYear(yy, k) {
   solarNY = jdn(1, 1, yy);
   currentJD = solarNY+offsetOfTet;
   j = k >> 4;
-  for(i = 0; i < 12; i++) {
+  for(let i = 0; i < 12; i++) {
     regularMonths[12 - i - 1] = monthLengths[j & 0x1];
     j >>= 1;
   }
@@ -120,7 +120,7 @@ function findLunarDate(jd, ly) {
     i--;
   }
   var off = jd - ly[i].jd;
-  ret = new LunarDate(ly[i].day+off, ly[i].month, ly[i].year, ly[i].leap, jd);
+  const ret = new LunarDate(ly[i].day+off, ly[i].month, ly[i].year, ly[i].leap, jd);
   return ret;
 }
 
