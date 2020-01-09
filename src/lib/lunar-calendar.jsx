@@ -348,7 +348,6 @@ function printSelectedMonth() {
 
 function printMonth(mm, yy) {
   var res = "";
-  res += printStyle();
   res += printTable(mm, yy);
   res += printFoot();
   return res;
@@ -357,7 +356,6 @@ function printMonth(mm, yy) {
 function printYear(yy) {
   var yearName = "N&#x103;m " + getYearCanChi(yy) + " " + yy;
   var res = "";
-  res += printStyle();
   res += '<table align=center>\n';
   res += ('<tr><td colspan="3" class="tennam" onClick="showYearSelect();">'+yearName+'</td></tr>\n');
   for (var i = 1; i<= 12; i++) {
@@ -378,26 +376,7 @@ function printSelectedYear() {
 }
 
 function printStyle() {
-  var fontSize = PRINT_OPTS.fontSize;
   var res = "";
-  res += '<style type="text/css">\n';
-  res += '<!--\n';
-  //res += '  body {margin:0}\n';
-  res += '  .tennam {text-align:center; font-size:150%; line-height:120%; font-weight:bold; color:#000000; background-color: #CCCCCC}\n';
-  res += '  .thang {font-size: '+fontSize+'; padding:1; line-height:100%; font-family:Tahoma,Verdana,Arial; table-layout:fixed}\n';
-  res += '  .tenthang {text-align:center; font-size:125%; line-height:100%; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
-  res += '  .navi-l {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Times New Roman,Arial; font-weight:bold; color:red; background-color: #CCFFCC}\n';
-  res += '  .navi-r {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Arial,Times New Roman; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
-  res += '  .ngaytuan {width:14%; text-align:center; font-size:125%; line-height:100%; color:#330033; background-color: #FFFFCC}\n';
-  res += '  .ngaythang {background-color:#FDFDF0}\n';
-  res += '  .homnay {background-color:#FFF000}\n';
-  res += '  .tet {background-color:#FFCC99}\n';
-  res += '  .am2 {text-align:right;font-size:75%;line-height:100%;color:#004080}\n';
-  res += '  .t2t6 {text-align:left;font-size:125%;color:black}\n';
-  res += '  .t7 {text-align:left;font-size:125%;line-height:100%;color:green}\n';
-  res += '  .cn {text-align:left;font-size:125%;line-height:100%;color:red}\n';
-  res += '-->\n';
-  res += '</style>\n';
   return res;
 }
 
