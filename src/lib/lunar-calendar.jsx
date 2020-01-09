@@ -392,7 +392,6 @@ function printStyle() {
   res += '  .ngaythang {background-color:#FDFDF0}\n';
   res += '  .homnay {background-color:#FFF000}\n';
   res += '  .tet {background-color:#FFCC99}\n';
-  res += '  .am {text-align:right;font-size:75%;line-height:100%;color:blue}\n';
   res += '  .am2 {text-align:right;font-size:75%;line-height:100%;color:#004080}\n';
   res += '  .t2t6 {text-align:left;font-size:125%;color:black}\n';
   res += '  .t7 {text-align:left;font-size:125%;line-height:100%;color:green}\n';
@@ -414,11 +413,11 @@ function printTable(mm, yy) {
   res += `<div class="lunar-calendar__month-head"> 
 						<div class="lunar-calendar__month-head__date">${mm}</div>
 						<div class="lunar-calendar__month-head__day-of-week">${TUAN[(currentLunarDate.jd + 1) % 7]}</div>
-						<div class="lunar-calendar__month-head__description">
-						  <div>Giờ đầu ngày: ${getCanHour0(currentLunarDate.jd)} ${CHI[0]}</div>
-						  <div>Giờ Hoàng Đao: ${getGioHoangDao(currentLunarDate.jd)}</div>
-						  <div>Tiết: ${TIET_KHI[getSunLongitude(currentLunarDate.jd+1, 7.0)]}</div>
-            </div>
+						<ul class="lunar-calendar__month-head__description">
+						  <li>Giờ đầu ngày: ${getCanHour0(currentLunarDate.jd)} ${CHI[0]}</li>
+						  <li>Giờ Hoàng Đao: ${getGioHoangDao(currentLunarDate.jd)}</li>
+						  <li>Tiết: ${TIET_KHI[getSunLongitude(currentLunarDate.jd+1, 7.0)]}</li>
+            </ul>
  					</div>`;
   res += ('<table class="lunar-calendar__month-table">\n');
   res += printHead(mm, yy);
@@ -467,12 +466,12 @@ function getNextYearLink(mm, yy) {
 function printHead(mm, yy) {
   var res = "";
   var monthName = mm+"/"+yy;
-  res += ('<tr><td colspan="2" class="navi-l">'+getPrevYearLink(mm, yy)+' &nbsp;'+getPrevMonthLink(mm, yy)+'</td>\n');
-  res += ('<td colspan="3" class="tenthang">'+monthName+'</td>\n');
-  res += ('<td colspan="2" class="navi-r">'+getNextMonthLink(mm, yy)+' &nbsp;'+getNextYearLink(mm, yy)+'</td></tr>\n');
+  res += ('<tr class="lunar-calendar__month-table__navigate-row"><td colspan="2" class="lunar-calendar__month-table__navigate-row__left">'+getPrevYearLink(mm, yy)+' &nbsp;'+getPrevMonthLink(mm, yy)+'</td>\n');
+  res += ('<td colspan="3" class="lunar-calendar__month-table__navigate-row__content">'+monthName+'</td>\n');
+  res += ('<td colspan="2" class="lunar-calendar__month-table__navigate-row__right">'+getNextMonthLink(mm, yy)+' &nbsp;'+getNextYearLink(mm, yy)+'</td></tr>\n');
   res += ('<tr>\n');
   for(var i=0;i<=6;i++) {
-    res += ('<td class=ngaytuan>'+DAYNAMES[i]+'</td>\n');
+    res += ('<td class=lunar-calendar__month-table__header>'+DAYNAMES[i]+'</td>\n');
   }
   res += ('<\/tr>\n');
   return res;
@@ -497,10 +496,10 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
     solarColor = "green";
   }
   if (solarDate == today.getDate() && solarMonth == today.getMonth()+1 && solarYear == today.getFullYear()) {
-    cellClass = "homnay lunar-calendar__month-table__cell current-date";
+    cellClass = "lunar-calendar__month-table__cell current-date";
   }
   if (lunarDate.day == 1 && lunarDate.month == 1) {
-    cellClass = "tet";
+    cellClass = "lunar-calendar__month-table__cell new-year";
   }
   if (lunarDate.leap == 1) {
     lunarClass = "am2";
@@ -517,7 +516,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
   if (lunarDate != null) {
     res += (' title="'+getDayName(lunarDate)+'"' + dateInfo);
   }
-  res += (' <div style=color:'+solarColor+' class="'+solarClass+'">'+solarDate+'</div> <div class="'+lunarClass+'">'+lunar+'</div></td>\n');
+  res += (' <div class="'+solarClass+'">'+solarDate+'</div> <div class="'+lunarClass+'">'+lunar+'</div></td>\n');
   return res;
 }
 
