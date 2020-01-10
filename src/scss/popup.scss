@@ -50,6 +50,28 @@ body {
       font-size: 20px;
       font-weight: 500;
     }
+    &__left {
+      a {
+        color: $primary-color;
+        &:hover {
+          color: #009688
+        }
+        &:visited {
+          color: $primary-color;
+        }
+      }
+    }
+    &__right {
+      a {
+        color: $primary-color;
+        &:hover {
+          color: #009688
+        }
+        &:visited {
+          color: $primary-color;
+        }
+      }
+    }
   }
   &__header {
     color: #A1A1A7;

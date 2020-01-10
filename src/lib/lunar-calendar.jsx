@@ -422,24 +422,24 @@ function getPrevMonthLink(mm, yy) {
   var mm1 = mm > 1 ? mm-1 : 12;
   var yy1 = mm > 1 ? yy : yy-1;
   //return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><img src="left1.gif" width=8 height=12 alt="PrevMonth" border=0></a>';
-  return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'">&lt;</a>';
+  return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><i class="material-icons">chevron_left</i></a>';
 }
 
 function getNextMonthLink(mm, yy) {
   var mm1 = mm < 12 ? mm+1 : 1;
   var yy1 = mm < 12 ? yy : yy+1;
   //return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><img src="right1.gif" width=8 height=12 alt="NextMonth" border=0></a>';
-  return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'">&gt;</a>';
+  return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><i class="material-icons">chevron_right</i></a>';
 }
 
 function getPrevYearLink(mm, yy) {
   //return '<a href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'"><img src="left2.gif" width=16 height=12 alt="PrevYear" border=0></a>';
-  return '<a href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'">&lt;&lt;</a>';
+  return '<a href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'"><i class="material-icons">arrow_back</i></a>';
 }
 
 function getNextYearLink(mm, yy) {
   //return '<a href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'"><img src="right2.gif" width=16 height=12 alt="NextYear" border=0></a>';
-  return '<a href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'">&gt;&gt;</a>';
+  return '<a href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'"><i class="material-icons">arrow_forward</i></a>';
 }
 
 function printHead(mm, yy) {
